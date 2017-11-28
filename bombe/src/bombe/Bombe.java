@@ -4,8 +4,6 @@ package bombe;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -16,6 +14,7 @@ public class Bombe extends Canvas
         implements Runnable{
         private boolean alive = true;
         private long delay = 100;//1000
+        private int time = 10;
         private int timeLeft = 10;
         private ArrayList listeners = new ArrayList();
         private Image bombe, explosion;
@@ -47,6 +46,7 @@ public class Bombe extends Canvas
         new Thread(this).start(); 
     }
     
+    
     public void boom() {
         alive = false;
         this.repaint();
@@ -66,6 +66,14 @@ public class Bombe extends Canvas
     
     public void setTimeLeft(int timeLeft){
         this.timeLeft=timeLeft;
+    }
+    
+    public int getTime(){
+        return time;
+    }
+    
+    public void setTime(int time){
+        this.time=time;
     }
 
 
