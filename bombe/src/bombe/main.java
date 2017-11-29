@@ -2,6 +2,14 @@
 package bombe;
 
 public class main {
-    Bombe b = new Bombe();
-    
+    public static void main(String[] args) {
+        Bombe t = new Bombe();
+        t.addTempListener(new TempListener(){
+            @Override
+            public void temp(TempEvent e) {
+                System.out.println("tick");
+            }
+        });
+        t.start();
+    }
 }
