@@ -30,11 +30,14 @@ public class Bombe extends Canvas
 
                 while (alive) {
             try {
-                //fireTempEvent(new TempEvent(this));
+                
                 Thread.sleep(delay);
                 if(this.getTimeLeft()>0){
                     this.repaint();
                 this.setTimeLeft(this.getTimeLeft()-1);
+                if(this.getTimeLeft()<4){
+                    fireTempEvent(new TempEvent(this));
+                }
                 System.out.println(this.getTimeLeft());}
                 else{
                     this.boom();
@@ -126,13 +129,17 @@ public class Bombe extends Canvas
     public void removeTempListener(TempListener l) {
         listeners.remove(l);
     }
-    public void fireTempEvent(TempEvent e) {
+    private void fireTempEvent(TempEvent e) {
         //System.out.println(getTimeLeft());
-        timeLeft=time;
-        this.repaint();
          Iterator i = listeners.iterator();
         while(i.hasNext())
             ((TempListener)i.next()).temp(e);
+    }
+    
+    public void onClick(){       
+        timeLeft=time;
+        //fireTempEvent(new TempEvent(this));
+
     }
     
 
