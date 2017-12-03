@@ -99,19 +99,19 @@ public class Bombe extends Canvas
          super.paint(g);
          
             try {
-                bombe = ImageIO.read(getClass().getClassLoader().getResource("./res/bombe.png"));
-                bombe_fat = ImageIO.read(getClass().getClassLoader().getResource("./res/bombe_fat.png"));
-                explosion = ImageIO.read(getClass().getClassLoader().getResource("./res/explosion.png"));
+                bombe = ImageIO.read(getClass().getClassLoader().getResource("res/bombe.png"));
+                bombe_fat = ImageIO.read(getClass().getClassLoader().getResource("res/bombe_fat.png"));
+                explosion = ImageIO.read(getClass().getClassLoader().getResource("res/explosion.png"));
                 //System.out.println(explosion.toString());
             } catch (IOException ex) {
                 Logger.getLogger(Bombe.class.getName()).log(Level.SEVERE, null, ex);
             }
                        
-             if(getTimeLeft()<=10 && getTimeLeft()>3){
+             if(getTimeLeft()<=getTime() && getTimeLeft()>getTime()/3){
                  //g.drawString("Bombe", 0, 15);
                 g.drawImage(bombe, 0, 0, this);
              }
-             if(getTimeLeft()>=1 && getTimeLeft()<=3){
+             if(getTimeLeft()>=getTime()/getTime() && getTimeLeft()<=getTime()/3){
                  g.drawImage(bombe_fat, 0, 0, this);
              }
             if(getTimeLeft()==0){
